@@ -1,0 +1,44 @@
+#!/system/bin/sh
+case "$1" in 
+    [0-9]*)
+        logcat -c
+        time=$(date +%Y%m%d-%H%M%S)
+        path=/data/local/logcat
+        file=$path/logcat-${time}-${1}s.log
+        android_sdk=`getprop ro.build.version.sdk`
+        build_desc=`getprop ro.build.description`
+        product=`getprop ro.build.product`
+        manufacturer=`getprop ro.product.manufacturer`
+        brand=`getprop ro.product.brand`
+        fingerprint=`getprop ro.build.fingerprint`
+        arch=`getprop ro.product.cpu.abi`
+        device=`getprop ro.product.device`
+        android=`getprop ro.build.version.release`
+        build=`getprop ro.build.id`
+        mkdir -p $path
+        echo "--------- beginning of head">>$file
+        echo "MyLogcat">>$file
+        echo "--------- beginning of system info">>$file
+        echo "Android version: ${android}">>$file
+        echo "Android sdk: ${android_sdk}">>$file
+        echo "Android build: ${build}">>$file
+        echo "Fingerprint: ${fingerprint}">>$file
+        echo "ROM build description: ${build_desc}">>$file
+        echo "Architecture: ${arch}">>$file
+        echo "Device: ${device}">>$file
+        echo "Manufacturer: ${manufacturer}">>$file
+        echo "Brand: ${brand}">>$file
+        echo "Product: ${product}">>$file
+	echo "--------- beginning of SELinux">>$file
+	getenforce>>$file
+        echo "--------- beginning of ps">>$file
+        ps -A >>$file
+        logcat -v threadtime *:V >>$file &
+        sleep ${1}s
+        pkill logcat
+         ;; 
+    *)
+        echo "Usage:";
+        echo "logc <second>";
+        ;;
+esac

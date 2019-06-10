@@ -1,20 +1,20 @@
 SKIPMOUNT=false
 PROPFILE=false
-POSTFSDATA=true
+POSTFSDATA=false
 LATESTARTSERVICE=true
-print_modname() {
-  ui_print "*******************************"
-  ui_print "*  Log Catcher Magisk Module  *"
-  ui_print "*        By MlgmXyysd.        *"
-  ui_print "*   QQ Chat Group 855219808   *"
-  ui_print "*******************************"
-}
 REPLACE="
 "
-on_install() {
-  ui_print "- Extracting module files"
-  unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
+
+print_modname() {
+  ui_print "*******************************"
+  ui_print "            MyLogcat           "
+  ui_print "*******************************"
 }
+
+on_install() {
+  ui_print "Setting logcat script..."
+}
+
 set_permissions() {
-  set_perm_recursive  $MODPATH  0  0  0755  0755
+  set_perm_recursive $MODPATH 0 0 0755 0644
 }

@@ -1,6 +1,6 @@
-id=logcat
-name=Log Catcher
-version=v17
-versionCode=17
-author=MlgmXyysd
-description=Catch boot log to /data/local/boot/boot-$time.log. QQ chat group 855219808.
+id=mylogcat
+name=MyLogcat
+version=v1.0
+versionCode=1
+author=MlgmXyysd & neoblackxt
+description=Catch boot log to /data/local/boot/boot-$time.log.

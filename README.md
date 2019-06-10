@@ -1,23 +1,12 @@
-# Log-Catcher
+# MyLogcat
 
-Catch boot log and save to /data/local/boot/boot-$time.log.
-
-Error or Warning only log is saved to /data/local/boot_error/error-$time.log.
+Catch boot log and save it to /data/local/boot/boot-$time.log.This module can help you to save boot and app crash log. It will autostop after device has been completely booted for 30 seconds. Working with [busybox-ndk](https://github.com/Magisk-Modules-Repo/busybox-ndk) module is recomended.
 
 ## Command (in Terminal):
 
 ```
-catlog [(Int)duration=60]
+logc <second>
 ```
 
-It will save the operation log in ${duration}s to /data/local/catlog/catlog-$time-${duration}s.log.
+It will save the operation log in ${second}s to /data/local/logcat/logcat-$time-${second}s.log.
 
-## For module developer:
-
-This module can help you to save boot and app crash log.
-
-If you don't want to kill the logcat process after boot completed, you can create /data/local/logcatcher/boot.lcs file.
-
-Error mode file is /data/local/logcatcher/error.lcs.
-
-QQ chat group 855219808.
