@@ -29,6 +29,8 @@ echo "Device: ${device}">>$file
 echo "Manufacturer: ${manufacturer}">>$file
 echo "Brand: ${brand}">>$file
 echo "Product: ${product}">>$file
+echo "--------- beginning of dmesg">>$file
+dmesg>>$file
 echo "--------- beginning of SELinux">>$file
 getenforce>>$file
 echo "--------- beginning of ps">>$file
